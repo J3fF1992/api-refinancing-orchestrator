@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 
+from aro.presentation_layer.views import bp_index
+
 
 load_dotenv()
 
@@ -19,6 +21,7 @@ def create_app(deploy_env: str = ENV) -> Flask:
     app.config.from_object(f"aro.config.{deploy_env}Config")
 
     _configure_logger(app=app)
+    _register_blueprints(app=app)
 
     return app
 
@@ -33,3 +36,7 @@ def _configure_logger(app: Flask) -> None:
 
     if not logger.hasHandlers():
         logger.addHandler(logging.StreamHandler(sys.stdout))
+
+
+def _register_blueprints(app: Flask) -> None:
+    app.register_blueprint(bp_index)
