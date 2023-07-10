@@ -7,7 +7,10 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 
-from aro.presentation_layer.views import bp_index
+from aro.presentation_layer.views import (
+    bp_index,
+    bp_offers
+)
 
 
 load_dotenv()
@@ -40,3 +43,4 @@ def _configure_logger(app: Flask) -> None:
 
 def _register_blueprints(app: Flask) -> None:
     app.register_blueprint(bp_index)
+    app.register_blueprint(bp_offers)

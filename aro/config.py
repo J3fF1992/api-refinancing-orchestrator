@@ -9,6 +9,9 @@ class BaseConfig(object):
     DEPLOY_ENV = getenv("DEPLOY_ENV", default="Development")
     LOGS_LEVEL = logging.INFO
 
+    API_CREDIT_PROPOSALS_SERVICES_URI = getenv("API_CREDIT_PROPOSALS_SERVICES_URI")
+    API_CREDIT_PROPOSALS_SERVICES_KEY = getenv("API_CREDIT_PROPOSALS_SERVICES_KEY")
+
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
@@ -24,4 +27,4 @@ class StagingConfig(BaseConfig):
 
 
 class ProductionConfig(BaseConfig):
-    LOGS_LEVEL = getenv("DEPLOY_ENV", default=logging.INFO)
+    LOGS_LEVEL = getenv("LOGS_LEVEL", default=logging.INFO)

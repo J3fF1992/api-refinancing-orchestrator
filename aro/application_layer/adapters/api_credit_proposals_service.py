@@ -11,7 +11,7 @@ from aro.domain_layer.ports import (
 )
 
 
-logger = logging.getLogger("aro" + __name__)
+logger = logging.getLogger("aro")
 
 
 class ApiCreditProposalsService(CreditProposalsService):

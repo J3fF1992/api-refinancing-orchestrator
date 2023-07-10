@@ -1,7 +1,5 @@
-import uuid
 from abc import ABC
-from datetime import date
-from enum import Enum
+from enum import auto, Enum
 from typing import TypedDict
 
 
@@ -13,12 +11,17 @@ class ProposalsErrorCodes(Enum):
     REFIN901 = "Request error to Proposals Service"
 
 
+class OffersResult(Enum):
+    ACCEPTED = auto()
+    DENIED = auto()
+
+
 class RefinOfferData(TypedDict):
-    id: uuid
+    id: str
     user_uuid: str
-    offered_at: date
-    expiration_at: date
-    date_base_at: date
+    offered_at: str
+    expiration_at: str
+    date_base_at: str
     iof_amount_cents: int
     cet_am: float
     cet_aa: float
@@ -32,9 +35,9 @@ class RefinOfferData(TypedDict):
     previous_contract_id: str
     previous_partner_contract_id: str
     product_type: str
-    previous_deposit_date: date
-    with_discount: bool
-    trigger_at: date
+    previous_deposit_at: str
+    with_disccount: bool
+    trigger_at: str
 
 
 class CreditProposalsService(ABC):

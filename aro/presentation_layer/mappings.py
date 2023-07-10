@@ -77,8 +77,8 @@ class CreateOffersRequestMapping(PayloadMapping):
         return self.payload.get("product_type")
 
     @property
-    def previous_deposit_date(self) -> str:
-        return self.payload.get("previous_deposit_date")
+    def previous_deposit_at(self) -> str:
+        return self.payload.get("previous_deposit_at")
 
     @property
     def with_discount(self) -> bool:

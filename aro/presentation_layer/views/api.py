@@ -5,7 +5,7 @@ from aro.presentation_layer.schemas import index_model
 
 
 VERSION = "0.0.1"
-DOC = "Api Refinancing Orchestrator - Index"
+DOC = "Api Refinancing Orchestrator"
 
 blueprint = Blueprint("index", __name__)
 
@@ -13,7 +13,7 @@ api = Api(
     blueprint,
     version=VERSION,
     title="Api Refinancing Orchestrator",
-    description=DOC,
+    description=f"{DOC} - Index",
     doc="/docs/swagger"
 )
 

@@ -12,3 +12,12 @@ index_model = Model(
         )
     }
 )
+
+
+generic_response_model = Model(
+    "GenericResponse",
+    {
+        "code": fields.String(example="REFIN900"),
+        "message": fields.String(example="Generic message")
+    }
+)

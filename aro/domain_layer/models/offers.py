@@ -3,6 +3,7 @@ import logging
 from .base_handlers import CreateOffersContext, Handler
 from aro.domain_layer.ports import (
     CreditProposalsService,
+    OffersResult,
     ProposalsError,
     ProposalsErrorCodes,
     RefinOfferData
@@ -10,7 +11,7 @@ from aro.domain_layer.ports import (
 from aro.presentation_layer.mappings import CreateOffersRequestMapping
 
 
-logger = logging.getLogger("aro" + __name__)
+logger = logging.getLogger("aro")
 
 
 class CreateOffersHandler(Handler):
@@ -23,7 +24,7 @@ class CreateOffersHandler(Handler):
     def _create_refin_offers(self, offer: RefinOfferData) -> dict:
         return self._service.save_refin_offer(offer=offer)
 
-    def _prepare_offer_data(offer: CreateOffersRequestMapping) -> RefinOfferData:
+    def _prepare_offer_data(self, offer: CreateOffersRequestMapping) -> RefinOfferData:
         return RefinOfferData(
             id=offer.id,
             user_uuid=offer.user_uuid,
@@ -42,8 +43,8 @@ class CreateOffersHandler(Handler):
             previous_contract_id=offer.previous_contract_id,
             previous_partner_contract_id=offer.previous_partner_contract_id,
             product_type=offer.product_type,
-            previous_deposit_date=offer.previous_deposit_date,
-            with_discount=offer.with_discount,
+            previous_deposit_at=offer.previous_deposit_at,
+            with_disccount=offer.with_discount,
             trigger_at=offer.trigger_at
         )
 
@@ -66,14 +67,14 @@ class CreateOffersHandler(Handler):
         try:
             response = self._create_refin_offers(offer=offer)
         except ProposalsError as e:
-            step_result = "DENIED"
+            step_result = OffersResult.DENIED
             context.deny_code = ProposalsErrorCodes.REFIN901.name
             context.deny_description = ProposalsErrorCodes.REFIN901.value
             response = str(e)
         else:
-            step_result = "APPROVED"
+            step_result = OffersResult.ACCEPTED
 
-        context.set_step_result(self.step_name, step_result)
+        context.set_step_result(self.step_name, step_result.name)
 
         logger.info(
             f"Finish {self.step_name} handler",
@@ -81,7 +82,7 @@ class CreateOffersHandler(Handler):
                 "props": {
                     "id": context.request_data.id,
                     "user_uuid": context.request_data.user_uuid,
-                    "step_result": step_result,
+                    "step_result": step_result.name,
                     "response": response
                 }
             }

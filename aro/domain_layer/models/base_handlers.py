@@ -26,6 +26,7 @@ class Handler(ABC):
             return self.next.handle(*args, **kwargs)
 
 
+@dataclass
 class ContextWithHistory(ABC):
     handlers_history: Dict[str, handler_result_literal] = field(
         default_factory=dict, init=False
