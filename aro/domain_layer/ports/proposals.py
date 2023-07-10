@@ -1,11 +1,16 @@
 import uuid
 from abc import ABC
 from datetime import date
+from enum import Enum
 from typing import TypedDict
 
 
 class ProposalsError(Exception):
     pass
+
+
+class ProposalsErrorCodes(Enum):
+    REFIN901 = "Request error to Proposals Service"
 
 
 class RefinOfferData(TypedDict):
