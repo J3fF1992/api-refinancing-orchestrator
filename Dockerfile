@@ -15,7 +15,7 @@ FROM base AS testing
 # Install testing packages (customize according to this application)
 # Note: Do not put any lib here except for testing.
 #       These libs will only be installed in the test container
-RUN pip install coverage freezegun mock pytest pytest-cov pytest-mock requests-mock mixer moto --no-cache-dir
+RUN pip install coverage freezegun mock pytest pytest-cov requests-mock mixer moto responses --no-cache-dir
 
 # Run tests
 COPY tests tests

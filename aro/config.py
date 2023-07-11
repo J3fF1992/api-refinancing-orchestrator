@@ -21,6 +21,9 @@ class TestingConfig(BaseConfig):
     DEBUG = True
     TESTING = True
 
+    API_CREDIT_PROPOSALS_SERVICES_URI = "http://api-credit-proposals-service.test.com"
+    API_CREDIT_PROPOSALS_SERVICES_KEY = "api-credit-proposals-service-key-test"
+
 
 class StagingConfig(BaseConfig):
     pass

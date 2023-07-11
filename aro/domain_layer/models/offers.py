@@ -40,6 +40,7 @@ class CreateOffersHandler(Handler):
             deposit_amount_cents=offer.deposit_amount_cents,
             installments=offer.installments,
             monthly_amount_cents=offer.monthly_amount_cents,
+            refinanced_amount_cents=offer.refinanced_amount_cents,
             previous_contract_id=offer.previous_contract_id,
             previous_partner_contract_id=offer.previous_partner_contract_id,
             product_type=offer.product_type,
