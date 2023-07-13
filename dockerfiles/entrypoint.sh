@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -ef
 
 cli_help() {
@@ -7,8 +9,8 @@ $cli_name
 API-REFINANCING-ORCHESTRATOR entrypoint cli
 Usage: $cli_name [command] [queues]
 Commands:
-  
-  
+
+
   web       deploy web
   migrate   deploy migrate
   *         Help
@@ -17,8 +19,8 @@ Commands:
 }
 
 case "$1" in
-  
-  
+
+
   web)
     uwsgi --ini ./uwsgi.ini --enable-threads --single-interpreter --gevent 100
     ;;
