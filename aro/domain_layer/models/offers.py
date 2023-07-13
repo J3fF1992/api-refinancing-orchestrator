@@ -88,3 +88,5 @@ class CreateOffersHandler(Handler):
                 }
             }
         )
+
+        return response

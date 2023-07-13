@@ -31,7 +31,7 @@ class OffersUseCase():
             api_credit_proposals_service=ApiCreditProposalsService
         )
 
-        create_offers_handler.handle(context=context)
+        response = create_offers_handler.handle(context=context)
 
         if context.deny_step:
             denied_response = {
@@ -61,4 +61,4 @@ class OffersUseCase():
             }
         )
 
-        return OffersResult.ACCEPTED, {"id": request_data.id}
+        return OffersResult.ACCEPTED, response

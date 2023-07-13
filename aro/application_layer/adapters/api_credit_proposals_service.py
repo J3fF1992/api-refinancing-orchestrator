@@ -17,7 +17,7 @@ logger = logging.getLogger("aro")
 class ApiCreditProposalsService(CreditProposalsService):
     @classmethod
     def save_refin_offer(cls, offer: RefinOfferData) -> dict:
-        path = "/v1/refinancing/offers"
+        path = "/v1/refinancings/offers"
         url = f"{current_app.config['API_CREDIT_PROPOSALS_SERVICES_URI']}{path}"
         headers = {
             "Content-Type": "application/json",

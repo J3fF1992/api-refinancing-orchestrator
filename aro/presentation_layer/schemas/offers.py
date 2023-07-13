@@ -7,7 +7,7 @@ create_offers_model = Model(
         "id": fields.String(
             description="Offer id",
             required=True,
-            example="5071345b63ee4e358a39-27cce2d9c170"
+            example="236d2747-8c46-4d6e-9a3c-cf3a4a7e3fb6"
         ),
         "user_uuid": fields.String(
             description="User id",
@@ -120,7 +120,7 @@ create_offers_response_model = Model(
         "id": fields.String(
             description="Offer id",
             required=True,
-            example="5071345b63ee4e358a39-27cce2d9c170"
+            example="236d2747-8c46-4d6e-9a3c-cf3a4a7e3fb6"
         )
     }
 )

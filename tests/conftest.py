@@ -78,7 +78,7 @@ def refin_offer_data():
 
 @pytest.fixture
 def api_credit_proposal_post_offer_url():
-    return "http://api-credit-proposals-service.test.com/v1/refinancing/offers"
+    return "http://api-credit-proposals-service.test.com/v1/refinancings/offers"
 
 
 @pytest.fixture
