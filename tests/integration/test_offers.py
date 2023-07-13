@@ -7,6 +7,9 @@ from aro.application_layer.use_cases import OffersUseCase
 from aro.domain_layer.ports import ProposalsErrorCodes
 
 
+CREATE_OFFERS_ENDPOINT = "/v1/offers"
+
+
 @responses.activate
 def test_post_offers_must_return_offer_id_and_status_200_when_offer_is_created_successfully(
     client,
@@ -23,7 +26,7 @@ def test_post_offers_must_return_offer_id_and_status_200_when_offer_is_created_s
     )
 
     response = client.post(
-        "/v1/offers",
+        CREATE_OFFERS_ENDPOINT,
         json=api_credit_proposal_post_offer_payload
     )
 
@@ -50,7 +53,7 @@ def test_post_offers_must_return_code_refin901_status_400_when_offer_is_not_crea
     )
 
     response = client.post(
-        "/v1/offers",
+        CREATE_OFFERS_ENDPOINT,
         json=api_credit_proposal_post_offer_payload
     )
 
@@ -71,7 +74,7 @@ def test_post_offers_must_return_code_400_status_400_when_some_unknown_exception
     }
 
     response = client.post(
-        "/v1/offers",
+        CREATE_OFFERS_ENDPOINT,
         json=api_credit_proposal_post_offer_payload
     )
 

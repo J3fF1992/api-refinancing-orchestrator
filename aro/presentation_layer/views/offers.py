@@ -33,7 +33,7 @@ class Offers(Resource):
     @ns.expect(create_offers_model)
     @ns.response(200, "OK", create_offers_response_model)
     @ns.response(400, "Bad Request", generic_response_model)
-    def post(self) -> dict:
+    def post(self) -> tuple[dict, int]:
         mapping = CreateOffersRequestMapping(payload=request.json)
 
         try:

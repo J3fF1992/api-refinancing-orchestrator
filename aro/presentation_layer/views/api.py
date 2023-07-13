@@ -25,7 +25,7 @@ ns.add_model(index_model.name, index_model)
 @ns.route("/health-status")
 class Index(Resource):
     @ns.response(200, "OK", index_model)
-    def get(self) -> dict:
+    def get(self) -> tuple[dict, int]:
         return dict(
             service=DOC,
             version=VERSION

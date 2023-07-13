@@ -14,7 +14,7 @@ logger = logging.getLogger("aro")
 
 class OffersUseCase():
     @classmethod
-    def create_refin_offers(cls, request_data: CreateOffersRequestMapping) -> dict:
+    def create_refin_offers(cls, request_data: CreateOffersRequestMapping) -> tuple[OffersResult, dict]:
         logger.info(
             "Create Refin Offers",
             extra={
